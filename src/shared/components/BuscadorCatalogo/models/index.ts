@@ -3,8 +3,7 @@
 
         id:number;
         title:string;
-        img:string;
-        path:string;
+        Buttom:JSX.Element
 
     
     }
@@ -16,3 +15,14 @@
     list:ModelCardMenuInfo[];
 
 }
+
+//////////////modelo lista catalogo  
+    export type ModelColumCatalogo={
+
+      id:number;
+      title:string;
+  
+
+
+  
+  }

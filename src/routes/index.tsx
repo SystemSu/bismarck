@@ -2,9 +2,10 @@ import { Estado } from "@/pages/private/catalogos/estado";
 import { ListaCatalogo } from "@/pages/private/catalogos/menuItemCard";
 import { Home } from "@/pages/public/home";
 import { Login } from "@/pages/public/login";
-import { CardMenu } from "@/shared/components/CardMenu";
+import { BuscadorCatalogo } from "@/shared/components/BuscadorCatalogo";
+import { Layout } from "@/shared/components/layout";
 import { LayoutPage } from "@/shared/components/layoutPage";
-import { LayoutSystem } from "@/shared/components/layoutSystem";
+
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -24,13 +25,13 @@ export const router = createBrowserRouter([
   },
   {
     path: "sistema",
-    element: <LayoutSystem />,
+    element: <Layout />,
     children: [
       ///gestion del sistema
 
       {
         path: "catalogo",
-        element: <CardMenu titleMenu={'Lista Catalogo'} list={ListaCatalogo}/>,
+        element: <BuscadorCatalogo titleMenu={'Lista Catalogo'} list={ListaCatalogo}/>,
       },
       {
         path: "catalogo/:estado",

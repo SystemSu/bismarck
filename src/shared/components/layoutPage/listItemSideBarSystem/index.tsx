@@ -55,7 +55,7 @@ export const NavbarMenu: React.FC<modelNavbarMenu> = ({ list }) => {
               <InboxIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={x.title} />
-            {expanded === x.title ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            {expanded === x.title ? <ExpandLessIcon /> : <ExpandLessIcon />}
           </ListItemButton>
 
           <Collapse

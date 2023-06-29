@@ -60,6 +60,24 @@ export const theme = createTheme({
         fontWeight: "bold",
       }
      }
-    }
+    },
+    MuiTable: {
+      defaultProps: {
+        size: 'small',
+        padding:'normal',
+        
+
+      },
+    },
   },
+  breakpoints:{
+    values:{
+      xs:0,
+      sm:768,
+      md:900,
+      lg:1200,
+      xl:1536
+
+    }
+  }
 });
