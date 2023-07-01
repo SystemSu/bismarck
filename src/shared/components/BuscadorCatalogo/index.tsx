@@ -9,14 +9,13 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField
+  TextField,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { StyledTableCell } from "../TableHeader";
 import { ColumnListaCatalogo } from "./column";
 import { ModelCardMenu, ModelCardMenuInfo } from "./models";
-
 export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
   titleMenu,
   list,
@@ -32,8 +31,8 @@ export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
   };
 
   return (
-    <Paper sx={{ overflow: "auto", width: "100%" }} elevation={5}>
-      <Stack>
+    <Paper sx={{ width: "100%",height:'100%' }} elevation={5}>
+      <Stack sx={{height:'5%'}}>
         <Divider>
           <Typography variant="h6" color="initial">
             {titleMenu}
@@ -43,12 +42,12 @@ export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
 
       <Paper
         sx={{
-          width: "100%",
-          height: "100%",
+          
           display: "flex",
           flexDirection: "column",
-          rowGap: 3,
-          minWidth: 375,
+          height:'95%',
+     
+        
         }}
       >
         <Box
@@ -56,7 +55,7 @@ export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "flex-end",
-            mt: 1,
+            pb:1
           }}
         >
           <TextField
@@ -69,11 +68,11 @@ export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
           />
           <SearchIcon fontSize="large" />
         </Box>
-        <TableContainer sx={{ height: "450px" }}>
+        <TableContainer sx={{ height:'100%'}}>
           <Table
             aria-label="customized table"
             stickyHeader
-            sx={{ overflow: "auto", p: "0 10px 20px 10px" }}
+            sx={{  p: "0 10px 20px 10px",overflow: "auto"}}
           >
             <TableHead>
               <TableRow>
@@ -87,7 +86,7 @@ export const BuscadorCatalogo: React.FC<ModelCardMenu> = ({
             <TableBody sx={{ overflow: "auto" }}>
               {lista.map((row) => (
                 <TableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
+                  <StyledTableCell component="th" scope="row" padding="none">
                     {row.title}
                   </StyledTableCell>
                   <StyledTableCell component="th" scope="row">

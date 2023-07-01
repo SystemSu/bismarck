@@ -40,6 +40,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: "lowercase",
+          fontWeight: "bold",
         },
 
         text: {
@@ -65,6 +66,8 @@ export const theme = createTheme({
       defaultProps: {
         size: 'small',
         padding:'normal',
+        
+       
         
 
       },

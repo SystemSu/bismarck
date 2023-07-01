@@ -1,5 +1,5 @@
 import { Estado } from "@/pages/private/catalogos/estado";
-import { ListaCatalogo } from "@/pages/private/catalogos/menuItemCard";
+import { ListaCatalogo } from "@/pages/private/catalogos/ListCatalogo";
 import { Home } from "@/pages/public/home";
 import { Login } from "@/pages/public/login";
 import { BuscadorCatalogo } from "@/shared/components/BuscadorCatalogo";

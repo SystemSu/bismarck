@@ -98,7 +98,7 @@ export const Layout:React.FC<{}>=()=> {
           </Stack>
         </Stack>
 
-        <Box p={2} height={"100%"} bgcolor={"#EAF1FC"} >
+        <Box p={2} height={"100%"} bgcolor={"#EAF1FC"} sx={{overflow:'hidden'}}>
           <Outlet />
         </Box>
       </Stack>
