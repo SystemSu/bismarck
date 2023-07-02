@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#2A3856",
+      main: "#1A509E",
     },
     secondary: {
       main: "#FF0000",
@@ -28,19 +28,25 @@ export const theme = createTheme({
           "& input:valid + fieldset": {
             borderColor: "black",
             borderWidth: 2,
+            
           },
 
           "& label.Mui-focused": {
             fontWeight: "bold",
+          
           },
+          
         },
       },
     },
     MuiButton: {
       styleOverrides: {
+        
         root: {
-          textTransform: "lowercase",
+          textTransform: "capitalize",
           fontWeight: "bold",
+       
+
         },
 
         text: {
@@ -72,6 +78,7 @@ export const theme = createTheme({
 
       },
     },
+
   },
   breakpoints:{
     values:{

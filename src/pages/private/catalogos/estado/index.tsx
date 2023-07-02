@@ -1,4 +1,7 @@
-import { useGetAllStateQuery } from "@/shared/ApiRTKQuery";
+import {
+  useGetAllStateQuery,
+  useCreateEstadoMutation,
+} from "@/shared/ApiRTKQuery";
 import { StyledTableCell } from "@/shared/components/TableHeader";
 import { CircularIndeterminate } from "@/shared/components/isLoading";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -16,15 +19,48 @@ import {
   TableHead,
   TableRow,
   TextField,
-  useMediaQuery,
-  useTheme,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Header } from "./columHeaderEstado";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { Link } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { ModelFormEstado } from "@/redux/models";
+
 export const Estado: React.FC<{}> = () => {
-  const { data, isLoading } = useGetAllStateQuery();
-  const theme = useTheme();
-  const celular = useMediaQuery(theme.breakpoints.down("sm"));
+  const { data, isLoading ,error,isError} = useGetAllStateQuery();
+  const [CrearEstado] = useCreateEstadoMutation();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+    watch,
+    reset,
+    setValue,
+    register,
+  } = useForm<ModelFormEstado>();
+
+  const onSubmit = (data: ModelFormEstado) => {
+    CrearEstado(data);
+
+    if (error) {
+     alert('hola')
+      if ('status' in error) {
+        
+     
+  
+          console.log(error.status)
+      }
+      else {
+        // you can access all properties of `SerializedError` here
+        console.log(error.message)
+      
+    }
+  }
+    reset();
+  };
   return (
     <Box
       sx={{
@@ -35,16 +71,7 @@ export const Estado: React.FC<{}> = () => {
         flexDirection: "column",
         rowGap: 2,
       }}
-    
     >
-      <Paper sx={{ paddingInline: 2, flexGrow: 0 }} elevation={5}>
-        <Divider>
-          <Typography variant="h6" color="initial">
-            Registro de catalogo de estado
-          </Typography>
-        </Divider>
-      </Paper>
-
       <Paper
         sx={{
           flexGrow: 0,
@@ -55,44 +82,105 @@ export const Estado: React.FC<{}> = () => {
         }}
         elevation={5}
       >
-        <Stack display={"flex"} flexDirection={"row"} gap={2} flexWrap={"wrap"} flexGrow={1}>
-          <TextField
-            id="a"
-            label="Nombre del estado"
-            variant="standard"
-            sx={{ flexGrow: 1 }}
-          />
+        <Box sx={{ display: "flex", columnGap: 1 }}>
+          <Tooltip title={"Regresar "}>
+            <Link to={"../catalogo"}>
+              <IconButton
+                aria-label=""
+                sx={{
+                  flexGrow: 0,
+                  bgcolor: "#27AE60",
+                  borderRadius: "50%",
+                  ":hover": {
+                    bgcolor: "#27AE60",
+                  },
+                }}
+                size="small"
+              >
+                <KeyboardBackspaceIcon fontSize="small" color="info" />
+              </IconButton>
+            </Link>
+          </Tooltip>
 
-          <TextField
-            id="s"
-            label="Descripcion del estado"
-            variant="standard"
-            sx={{ flexGrow: 1 }}
-          />
-        </Stack>
+          <Divider sx={{ flexGrow: 1 }}>
+            <Typography variant="h6" color="initial">
+              Registro de catalogo de estado
+            </Typography>
+          </Divider>
+        </Box>
         <Stack
           display={"flex"}
-          flexDirection={"row"}
-          gap={5}
-          justifyContent={"flex-end"}
-          alignItems={'flex-end'}
-       
-          flexGrow={1}
+          flexDirection={"column"}
+          gap={2}
+          flexWrap={"wrap"}
+          component={"form"}
+          onSubmit={handleSubmit(onSubmit)}
         >
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<SaveAsIcon />}
+          <Stack
+            display={"flex"}
+            flexDirection={"row"}
+            flexGrow={1}
+            flexWrap={"wrap"}
+            columnGap={5}
+            rowGap={2}
           >
-            Cancelar
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<DeleteIcon />}
+            <Controller
+              name="Estado"
+              control={control}
+              defaultValue={""}
+              rules={{ required: true }}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label="Estado"
+                  variant="standard"
+                  error={errors.Estado ? true : false}
+                  onChange={onChange}
+                  value={value}
+                  sx={{ flexGrow: 1 }}
+                />
+              )}
+            />
+
+            <Controller
+              name="Descripcion"
+              control={control}
+              defaultValue={""}
+              rules={{ required: true }}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label="Descripciòn"
+                  variant="standard"
+                  error={errors.Descripcion ? true : false}
+                  onChange={onChange}
+                  value={value}
+                  sx={{ flexGrow: 3 }}
+                />
+              )}
+            />
+          </Stack>
+          <Stack
+            display={"flex"}
+            flexDirection={"row"}
+            gap={5}
+            justifyContent={"flex-end"}
+            flexGrow={1}
           >
-            Cancelar
-          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<SaveAsIcon />}
+              type="submit"
+            >
+              Guardar
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              startIcon={<DeleteIcon />}
+            >
+              Cancelar
+            </Button>
+          </Stack>
         </Stack>
       </Paper>
 
@@ -121,7 +209,7 @@ export const Estado: React.FC<{}> = () => {
             size="small"
             onChange={(e) => console.log()}
           />
-          <SearchIcon fontSize="large" />
+          <SearchIcon fontSize="large" color="primary" />
         </Box>
         <TableContainer sx={{ overflow: "auto" }}>
           <Table

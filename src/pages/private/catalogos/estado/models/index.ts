@@ -14,3 +14,5 @@ export type ModelBackendEstado = {
   ultimafechaactualizacion:string,
   estado: string
 };
+
+

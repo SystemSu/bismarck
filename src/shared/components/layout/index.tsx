@@ -39,7 +39,7 @@ export const Layout:React.FC<{}>=()=> {
         marginLeft={theme.spacing(celular ? 0 : 33)}
         width={"100%"}
       >
-        <Stack bgcolor={"#2A3856"} direction={"row"} height={"6%"}>
+        <Stack bgcolor={"#1A509E"} direction={"row"} height={"6%"}>
           {" "}
           {/*nav*/}
           <Stack

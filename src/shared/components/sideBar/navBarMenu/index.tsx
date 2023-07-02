@@ -61,7 +61,7 @@ export const NavbarMenu: React.FC<modelNavbarMenu> = ({ list }) => {
       sx={{
         width: "100%",
         bgcolor: "background.paper",
-        background: "#2A3856",
+        background: "#1A509E",
       }}
       component="nav"
       aria-labelledby="nested-list-subheader"

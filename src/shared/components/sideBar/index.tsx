@@ -27,7 +27,7 @@ export const SystemSideBar: React.FC<ModelSystemSiceBar> = ({
       onClose={() => setIsOpen(false)}
       PaperProps={{
         sx: {
-          bgcolor: "#2A3856",
+          bgcolor: "#1A509E",
           color: "white",
         },
       }}
