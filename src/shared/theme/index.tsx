@@ -58,6 +58,7 @@ export const theme = createTheme({
       styleOverrides: {
         primary: {
           fontWeight: "bold",
+          fontSize:'12px'
         },
       },
     },

@@ -1,7 +1,6 @@
 import { Api } from "@/shared/services";
 import { AdapterGetAll } from "../adapters";
-import { ModelBackendEstado } from "../models";
-
+import { ModelBackendEstado } from "@/zustand";
 
 
 

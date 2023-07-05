@@ -7,6 +7,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -58,6 +59,7 @@ export const NavbarMenu: React.FC<modelNavbarMenu> = ({ list }) => {
 
   return (
     <List
+      disablePadding
       sx={{
         width: "100%",
         bgcolor: "background.paper",
@@ -71,20 +73,31 @@ export const NavbarMenu: React.FC<modelNavbarMenu> = ({ list }) => {
           <ListItemButton
             onClick={() => handleChange(x.title, true)}
             sx={{
-              borderRadius: 20,
+              color: "white",
               display: "flex",
 
-              ":hover": {
-                bgcolor: "#5279CB",
-              },
+              columnGap: 2,
             }}
-            dense
           >
-            <ListItemIcon sx={{ color: "white" }} key={x.id}>
-              <InboxIcon fontSize="small" />
+            <ListItemIcon
+              sx={{
+                color: "white",
+                display: "flex",
+                flexGrow: 1,
+                columnGap: 2,
+              }}
+              key={x.id}
+            >
+              {x.icon}
+              <ListItemText primary={x.title} />
             </ListItemIcon>
-            <ListItemText primary={x.title} />
-            {expanded === x.title ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+            <Stack>
+              {expanded === x.title ? (
+                <ArrowDropUpIcon />
+              ) : (
+                <ArrowDropDownIcon />
+              )}
+            </Stack>
           </ListItemButton>
 
           <Collapse
@@ -96,25 +109,31 @@ export const NavbarMenu: React.FC<modelNavbarMenu> = ({ list }) => {
               <List
                 component="div"
                 disablePadding
-                dense
                 key={y.id}
-                onClick={() => handleChange_(x.title, false)}
+                onClick={() => handleChange_(y.title, false)}
               >
                 <ListItemButton
                   onClick={() => to(y.path)}
                   dense
                   sx={{
-                    borderRadius: 20,
+                    color: "white",
                     display: "flex",
-                    ml: 4,
-
-                    ":hover": {
-                      bgcolor: "#5279CB",
-                    },
+                    columnGap: 2,
                   }}
                 >
-                  <ListItemIcon sx={{ color: "white" }}>{y.icon}</ListItemIcon>
-                  <ListItemText primary={y.title} />
+                  <ListItemIcon
+                    sx={{
+                      color: "white",
+                      display: "flex",
+                      flexGrow: 1,
+                      columnGap: 2,
+                      pl: 2,
+                    }}
+                    key={y.id}
+                  >
+                    {y.icon}
+                    <ListItemText primary={y.title} />
+                  </ListItemIcon>
                 </ListItemButton>
               </List>
             ))}

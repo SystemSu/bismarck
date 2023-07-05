@@ -3,16 +3,8 @@ export type ModelColumEstado = {
   title: string;
 };
 
-///modelo del backend para mostrar en la tabla
-export type ModelBackendEstado = {
-  id: string,
-  nombreestado: string,
-  descripcion:string
-  registradopor:string,
-  fecharegistro:string,
-  actualizadopor:string,
-  ultimafechaactualizacion:string,
-  estado: string
+///modelo form
+export type ModelFormEstao = {
+  Estado: string;
+  Descripcion: string;
 };
-
-

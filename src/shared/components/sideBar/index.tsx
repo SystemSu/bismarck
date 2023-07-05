@@ -38,30 +38,33 @@ export const SystemSideBar: React.FC<ModelSystemSiceBar> = ({
 
           <Typography
             mt={1}
-            variant="body2"
+            variant="subtitle2"
             sx={{
               textAlign: "center",
-
               width: "100%",
               textOverflow: "ellipsis",
               overflow: "hidden",
               whiteSpace: "nowrap",
               color: "white",
+              fontWeight:'bold',
+              fontSize:'11px'
+
             }}
           >
             {"Bismarck Romero"}
           </Typography>
 
           <Typography
-            variant="body2"
+            variant="subtitle2"
             sx={{
               textAlign: "center",
-
+              fontWeight:'bold',
               width: "100%",
               textOverflow: "ellipsis",
               overflow: "hidden",
               whiteSpace: "nowrap",
               color: "white",
+              fontSize:'11px'
             }}
           >
             {"Administrador del sistema"}
@@ -69,7 +72,7 @@ export const SystemSideBar: React.FC<ModelSystemSiceBar> = ({
         </Stack>
         <Divider sx={{ bgcolor: "white" }} />
 
-        <Stack alignItems={"center"} width={"100%"} flex={1} mt={2}>
+        <Stack alignItems={"center"} width={"100%"} flex={1} mt={5}>
           <NavbarMenu list={navLinks} setOpen={setIsOpen} />
         </Stack>
       </Stack>

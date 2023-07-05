@@ -1,16 +1,14 @@
-import {
-  useGetAllStateQuery,
-  useCreateEstadoMutation,
-} from "@/shared/ApiRTKQuery";
+import { useFetchRepositori, useCreateState } from "@/hooks";
 import { StyledTableCell } from "@/shared/components/TableHeader";
-import { CircularIndeterminate } from "@/shared/components/isLoading";
 import DeleteIcon from "@mui/icons-material/Delete";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   Box,
   Button,
   Divider,
+  IconButton,
   Paper,
   Stack,
   Table,
@@ -19,48 +17,34 @@ import {
   TableHead,
   TableRow,
   TextField,
-  IconButton,
   Tooltip,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { Header } from "./columHeaderEstado";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
-import { ModelFormEstado } from "@/redux/models";
+import { Link } from "react-router-dom";
+import { Header } from "./columHeaderEstado";
+import { ModelFormEstao } from "./models";
+import { AxiosError } from "axios";
+import Swal from "sweetalert2";
 
 export const Estado: React.FC<{}> = () => {
-  const { data, isLoading ,error,isError} = useGetAllStateQuery();
-  const [CrearEstado] = useCreateEstadoMutation();
+
+  const { data } = useFetchRepositori();
+  const { mutate: crearEstado, error,isError,data:s} = useCreateState();
   const {
     handleSubmit,
     control,
     formState: { errors },
-    watch,
     reset,
-    setValue,
-    register,
-  } = useForm<ModelFormEstado>();
+  } = useForm<ModelFormEstao>();
 
-  const onSubmit = (data: ModelFormEstado) => {
-    CrearEstado(data);
+  const onSubmit = (data: ModelFormEstao) => {
+    crearEstado(data);
 
-    if (error) {
-     alert('hola')
-      if ('status' in error) {
-        
-     
-  
-          console.log(error.status)
-      }
-      else {
-        // you can access all properties of `SerializedError` here
-        console.log(error.message)
-      
-    }
-  }
     reset();
   };
+console.log(s)
+
   return (
     <Box
       sx={{
@@ -227,21 +211,17 @@ export const Estado: React.FC<{}> = () => {
               </TableRow>
             </TableHead>
             <TableBody sx={{ overflow: "auto" }}>
-              {!isLoading ? (
-                data?.map((row) => (
-                  <TableRow key={row.id}>
-                    <StyledTableCell align="center">
-                      {row.nombreestado}
-                    </StyledTableCell>
+              {data?.map((row) => (
+                <TableRow key={row.id}>
+                  <StyledTableCell align="center">
+                    {row.nombreestado}
+                  </StyledTableCell>
 
-                    <StyledTableCell align="center">
-                      {row.descripcion}
-                    </StyledTableCell>
-                  </TableRow>
-                ))
-              ) : (
-                <CircularIndeterminate />
-              )}
+                  <StyledTableCell align="center">
+                    {row.descripcion}
+                  </StyledTableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

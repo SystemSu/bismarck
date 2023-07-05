@@ -1,32 +1,36 @@
 import BadgeSharpIcon from "@mui/icons-material/BadgeSharp";
-
-
+import GroupIcon from '@mui/icons-material/Group';
+import PaidIcon from '@mui/icons-material/Paid';
+import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 export const navLinks = [
   {
     id: 1,
     title: "Gestion de empleado",
-    icon: <BadgeSharpIcon fontSize="small" />,
+    icon: <BadgeSharpIcon fontSize="medium" />,
     
     
     lista: [
       {
         id: 2,
-        title: "Registro de empleado",
-        path: "registro",
-        icon: <BadgeSharpIcon fontSize="small" />,
+        title: "Crear empleado",
+        path: "viewEmpleado",
+        icon: <AddCircleOutlineIcon fontSize="small" />,
       },
       {
         id: 3,
-        title: "consulta",
+        title: "Consultar",
         path: "consutaEmpleado",
-        icon: <BadgeSharpIcon fontSize="small" />,
+        icon: <FormatListNumberedIcon fontSize="small" />,
       },
     ],
   },
   {
     id: 4,
     title: "Gestion de cliente",
-    icon: <BadgeSharpIcon fontSize="small" />,
+    icon: <GroupIcon fontSize="medium" />,
     lista: [
       {
         id: 5,
@@ -45,7 +49,7 @@ export const navLinks = [
   {
     id: 7,
     title: "Gesrion de caja",
-    icon: <BadgeSharpIcon fontSize="small" />,
+    icon: <PaidIcon fontSize="medium" />,
     lista: [
       {
         id: 8,
@@ -64,13 +68,13 @@ export const navLinks = [
   {
     id: 10,
     title: "Gestion del sistema",
-    icon: <BadgeSharpIcon fontSize="small" />,
+    icon: <SettingsSuggestIcon fontSize="medium" />,
     lista: [
       {
         id: 11,
         title: "Catalogos",
         path: "catalogo",
-        icon: <BadgeSharpIcon fontSize="small" />,
+        icon: <TextSnippetIcon fontSize="small" />,
       },
       {
         id: 12,

@@ -1,4 +1,4 @@
-import { ModelBackendEstado } from "../models"
+import { ModelBackendEstado } from "@/zustand"
 
 
 export const AdapterGetAll = (state: ModelBackendEstado[] ) => {

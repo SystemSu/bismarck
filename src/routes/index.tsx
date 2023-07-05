@@ -1,5 +1,6 @@
 import { Estado } from "@/pages/private/catalogos/estado";
 import { ListaCatalogo } from "@/pages/private/catalogos/ListCatalogo";
+import { ViewEmployee } from "@/pages/private/Employee/components/view";
 import { Home } from "@/pages/public/home";
 import { Login } from "@/pages/public/login";
 import { BuscadorCatalogo } from "@/shared/components/BuscadorCatalogo";
@@ -36,6 +37,12 @@ export const router = createBrowserRouter([
       {
         path: "catalogo/:estado",
         element: <Estado />,
+      },
+      //empleado
+
+      {
+        path: "viewEmpleado",
+        element: <ViewEmployee />,
       },
     ],
   },
